@@ -37,13 +37,7 @@ def predict(image: Image.Image):
     #image = image / 255.0
 
     result = check_anomaly(image)
-
-    response = []
-    resp = {}
-    resp["Result"] = result
-    response.append(resp)
-
-    return response
+    return result
 
 
 def read_imagefile(file) -> Image.Image:
