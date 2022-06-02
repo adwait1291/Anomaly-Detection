@@ -3,7 +3,6 @@ from io import BytesIO
 import numpy as np
 import tensorflow as tf
 from PIL import Image
-#from tensorflow.keras.applications.imagenet_utils import decode_predictions
 from keras.models import load_model
 MODEL_PATH = 'application/Assets/anomoly.h5'
 model = None

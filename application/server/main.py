@@ -4,10 +4,9 @@ from starlette.responses import RedirectResponse
 
 from application.components import predict, read_imagefile
 
-app_desc = """<h2>Try this app by uploading any image with `predict/image`</h2>
-<br>by Aniket Maurya"""
+app_desc = """<h2>Hello `predict/image`</h2>"""
 
-app = FastAPI(title='Tensorflow FastAPI Starter Pack', description=app_desc)
+app = FastAPI(title='Hello', description=app_desc)
 
 
 @app.get("/", include_in_schema=False)
