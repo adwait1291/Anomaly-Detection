@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 from keras.models import load_model
-MODEL_PATH = 'application/Assets/anomoly.h5'
+MODEL_PATH = 'application/Assets/anomaly.h5'
 model = None
 
 
