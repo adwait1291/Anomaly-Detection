@@ -14,7 +14,7 @@ def loadModel():
     return model
 
 def check_anomaly(img):
-    reconstruction_error_threshold = 0.0035
+    reconstruction_error_threshold = 0.004
     img = np.array(img.resize((224,224), Image.ANTIALIAS))
     img = img / 255.
     img = img[np.newaxis, :,:,:]
