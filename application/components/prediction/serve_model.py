@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 from keras.models import load_model
-MODEL_PATH = 'application/Assets/anomaly.h5'
+MODEL_PATH = 'application/Assets/AppleAnomaly.h5'
 model = None
 
 
@@ -14,7 +14,7 @@ def loadModel():
     return model
 
 def check_anomaly(img):
-    reconstruction_error_threshold = 0.004
+    reconstruction_error_threshold = 0.0020
     img = np.array(img.resize((224,224), Image.ANTIALIAS))
     img = img / 255.
     img = img[np.newaxis, :,:,:]
