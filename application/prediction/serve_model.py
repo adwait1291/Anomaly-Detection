@@ -1,5 +1,4 @@
 from io import BytesIO
-
 import numpy as np
 import tensorflow as tf
 from PIL import Image
@@ -13,6 +12,7 @@ def loadModel():
     print("Model loaded")
     return model
 
+
 def check_anomaly(img):
     reconstruction_error_threshold = 0.0099
     img = np.array(img.resize((224,224), Image.ANTIALIAS))
@@ -20,7 +20,6 @@ def check_anomaly(img):
     img = img[np.newaxis, :,:,:]
     reconstruction = model.predict([[img]])
     reconstruction_error = model.evaluate([reconstruction],[[img]], batch_size = 1)[0]
-
     if reconstruction_error > reconstruction_error_threshold:
         return "Anomaly" 
     else:
@@ -31,11 +30,6 @@ def predict(image: Image.Image):
     global model
     if model is None:
         model = loadModel()
-
-    #image = np.asarray(image.resize((224, 224)))[..., :3]
-    #image = np.expand_dims(image, 0)
-    #image = image / 255.0
-
     result = check_anomaly(image)
     return result
 
