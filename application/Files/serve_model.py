@@ -13,6 +13,7 @@ def loadModel():
     print("Model loaded")
     return model
 
+
 def check_anomaly(img):
     reconstruction_error_threshold = 0.0099
     img = np.array(img.resize((224,224), Image.ANTIALIAS))
@@ -31,11 +32,6 @@ def predict(image: Image.Image):
     global model
     if model is None:
         model = loadModel()
-
-    #image = np.asarray(image.resize((224, 224)))[..., :3]
-    #image = np.expand_dims(image, 0)
-    #image = image / 255.0
-
     result = check_anomaly(image)
     return result
 
