@@ -1,11 +1,12 @@
 import uvicorn
 from fastapi import FastAPI, File, UploadFile
 from starlette.responses import RedirectResponse
-import serve_model
 
+from application.components import predict, read_imagefile
 
-app_desc = """<h2>Anomaly Detector `detect/image`</h2>"""
-app = FastAPI(title='Anomaly Detector', description=app_desc)
+app_desc = """<h2>Hello `predict/image`</h2>"""
+
+app = FastAPI(title='Hello', description=app_desc)
 
 
 @app.get("/", include_in_schema=False)
@@ -15,9 +16,16 @@ async def index():
 
 @app.post("/predict/image")
 async def predict_api(file: UploadFile = File(...)):
+    extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
+    if not extension:
+        return "Image must be jpg or png format!"
     image = read_imagefile(await file.read())
     prediction = predict(image)
+
     return prediction
+
+
+
 
 
 if __name__ == "__main__":
