@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI, File, UploadFile
 from starlette.responses import RedirectResponse
-from application.prediction import serve_model
+from application.prediction.serve_model import predict, read_imagefile
 
 app_desc = """<h2>Anomaly Detection`detect/image`</h2>"""
 app = FastAPI(title='Anomaly Detection', description=app_desc)
